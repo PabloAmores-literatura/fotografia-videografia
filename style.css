@@ -42,4 +42,24 @@ h1 {
     font-weight: normal;
 }
 ```
+```css
+@media (max-width: 700px) {
+
+    main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    section {
+        height: 50vh;
+    }
+
+    .fotografia {
+        border-right: none;
+        border-bottom: 1px solid #333;
+    }
+
+}
+```
+
 
