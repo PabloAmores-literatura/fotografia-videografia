@@ -1,6 +1,5 @@
-```css id="q7m2kd"
 /* =========================================
-   CONFIGURACIÓN GENERAL
+   RESET
 ========================================= */
 
 * {
@@ -14,38 +13,61 @@ html {
 }
 
 body {
-    background: #0b0b0b;
-    color: #f2f2f2;
+    background: #080808;
+    color: #f5f5f5;
     font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.5;
+    overflow-x: hidden;
 }
 
 
 /* =========================================
-   CABECERA
+   PORTADA
 ========================================= */
 
 .hero {
-    min-height: 35vh;
+    min-height: 38vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 60px 30px;
+    position: relative;
 }
+
+
+/* pequeña línea superior */
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    width: 40px;
+    height: 1px;
+    background: #555;
+    transform: translateX(-50%);
+}
+
+
+/* título */
 
 .hero h1 {
-    font-size: clamp(2rem, 6vw, 5rem);
-    font-weight: 400;
-    letter-spacing: 0.08em;
+    font-size: clamp(2.4rem, 7vw, 6.5rem);
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    max-width: 1100px;
 }
 
-.hero p {
-    margin-top: 15px;
-    color: #999;
-    font-size: 0.9rem;
-    letter-spacing: 0.2em;
+
+/* subtítulo */
+
+.hero p:last-child {
+    margin-top: 22px;
+    color: #777;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
     text-transform: uppercase;
 }
 
@@ -57,190 +79,135 @@ body {
 main {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 65vh;
+    min-height: 62vh;
 }
+
+
+/* =========================================
+   CATEGORÍAS
+========================================= */
 
 section.fotografia,
 section.videografia {
-    min-height: 65vh;
+    min-height: 62vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 60px;
-    transition: background 0.4s ease;
+    padding: 70px 50px;
+    position: relative;
+    overflow: hidden;
+    transition:
+        background 0.5s ease,
+        transform 0.5s ease;
 }
+
+
+/* línea divisoria */
 
 .fotografia {
-    border-right: 1px solid #333;
-}
-
-.fotografia:hover {
-    background: #111;
-}
-
-.videografia:hover {
-    background: #111;
+    border-right: 1px solid #252525;
 }
 
 
-.section-content {
-    max-width: 500px;
-}
+/* número */
 
 .section-number {
-    color: #777;
-    font-size: 0.75rem;
-    letter-spacing: 0.25em;
-    margin-bottom: 20px;
+    color: #555;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    margin-bottom: 25px;
 }
+
+
+/* contenido */
+
+.section-content {
+    max-width: 520px;
+    position: relative;
+    z-index: 2;
+}
+
+
+/* títulos */
 
 .section-content h2 {
-    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-size: clamp(2.8rem, 5vw, 5.5rem);
     font-weight: 300;
     letter-spacing: 0.08em;
+    line-height: 1;
 }
 
+
+/* descripción */
+
 .section-description {
-    color: #999;
-    max-width: 350px;
-    margin: 25px auto 35px;
-    font-size: 0.95rem;
+    color: #777;
+    max-width: 330px;
+    margin: 28px auto 38px;
+    font-size: 0.85rem;
+    line-height: 1.8;
 }
+
+
+/* =========================================
+   EFECTO HOVER
+========================================= */
+
+section.fotografia::after,
+section.videografia::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border: 1px solid #222;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+    opacity: 0;
+    transition:
+        transform 0.7s ease,
+        opacity 0.7s ease;
+}
+
+
+section.fotografia:hover,
+section.videografia:hover {
+    background: #101010;
+}
+
+
+section.fotografia:hover::after,
+section.videografia:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+
+/* =========================================
+   BOTÓN
+========================================= */
 
 .enter {
     display: inline-block;
-    color: #fff;
+    color: #f5f5f5;
     text-decoration: none;
-    border-bottom: 1px solid #777;
-    padding-bottom: 5px;
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    transition: border-color 0.3s ease;
+    border-bottom: 1px solid #555;
+    padding-bottom: 8px;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    transition:
+        border-color 0.3s ease,
+        letter-spacing 0.3s ease,
+        color 0.3s ease;
 }
+
 
 .enter:hover {
     border-color: #fff;
-}
-
-
-/* =========================================
-   PORTFOLIO
-========================================= */
-
-.portfolio {
-    padding: 120px 8vw;
-    background: #f2f2f2;
-    color: #111;
-}
-
-.portfolio-header {
-    max-width: 700px;
-    margin-bottom: 80px;
-}
-
-.portfolio-header .section-number {
-    color: #888;
-}
-
-.portfolio-header h2 {
-    font-size: clamp(3rem, 7vw, 7rem);
-    font-weight: 300;
-    letter-spacing: 0.05em;
-}
-
-.portfolio-header p:last-child {
-    margin-top: 20px;
-    color: #666;
-}
-
-
-/* =========================================
-   FOTOGRAFÍA
-========================================= */
-
-.fotografia-portfolio {
-    min-height: 60vh;
-}
-
-.coming-soon {
-    border-top: 1px solid #ccc;
-    padding-top: 30px;
-}
-
-.coming-soon p {
-    font-size: 1.5rem;
-    margin-bottom: 5px;
-}
-
-.coming-soon span {
-    color: #777;
-}
-
-
-/* =========================================
-   VIDEOGRAFÍA
-========================================= */
-
-.video-portfolio {
-    background: #0b0b0b;
-    color: #f2f2f2;
-}
-
-.video-portfolio .portfolio-header .section-number {
-    color: #666;
-}
-
-.video-portfolio .portfolio-header p:last-child {
-    color: #888;
-}
-
-
-.video-project {
-    margin-bottom: 120px;
-}
-
-.video-container {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #000;
-    overflow: hidden;
-}
-
-.video-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-
-.project-info {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    column-gap: 30px;
-    margin-top: 25px;
-}
-
-.project-number {
-    color: #666;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-}
-
-.project-info h3 {
-    font-size: 2rem;
-    font-weight: 400;
-}
-
-.artist {
-    color: #aaa;
-    margin-top: 5px;
-}
-
-.project-description {
-    color: #777;
-    margin-top: 15px;
-    max-width: 600px;
+    color: #fff;
+    letter-spacing: 0.35em;
 }
 
 
@@ -249,12 +216,45 @@ section.videografia {
 ========================================= */
 
 footer {
-    padding: 50px 30px;
+    padding: 35px 30px;
     text-align: center;
-    background: #0b0b0b;
-    color: #666;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
+    background: #080808;
+    color: #444;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+}
+
+
+/* =========================================
+   ANIMACIONES DE ENTRADA
+========================================= */
+
+.hero h1 {
+    animation: fadeUp 1s ease forwards;
+}
+
+.hero p {
+    animation: fadeUp 1.2s ease forwards;
+}
+
+
+.section-content {
+    animation: fadeUp 1.2s ease forwards;
+}
+
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
 }
 
 
@@ -264,52 +264,68 @@ footer {
 
 @media (max-width: 700px) {
 
+    .hero {
+        min-height: 32vh;
+        padding: 50px 20px;
+    }
+
+    .hero::before {
+        top: 25px;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+        line-height: 1.15;
+        letter-spacing: 0.08em;
+    }
+
+    .hero p:last-child {
+        font-size: 0.6rem;
+        letter-spacing: 0.25em;
+    }
+
+
     main {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
     }
 
+
     section.fotografia,
     section.videografia {
-        min-height: 50vh;
-        height: 50vh;
-        padding: 40px 25px;
+        min-height: 34vh;
+        height: 34vh;
+        padding: 45px 25px;
     }
+
 
     .fotografia {
         border-right: none;
-        border-bottom: 1px solid #333;
+        border-bottom: 1px solid #252525;
     }
 
-    .hero {
-        min-height: 30vh;
-        padding: 40px 20px;
+
+    .section-number {
+        margin-bottom: 15px;
     }
 
-    .hero h1 {
-        font-size: 2rem;
+
+    .section-content h2 {
+        font-size: 2.6rem;
     }
 
-    .portfolio {
-        padding: 80px 25px;
+
+    .section-description {
+        margin: 18px auto 25px;
+        font-size: 0.78rem;
+        line-height: 1.6;
     }
 
-    .portfolio-header {
-        margin-bottom: 50px;
-    }
 
-    .video-project {
-        margin-bottom: 80px;
-    }
-
-    .project-info {
-        grid-template-columns: 45px 1fr;
-        column-gap: 15px;
-    }
-
-    .project-info h3 {
-        font-size: 1.5rem;
+    section.fotografia::after,
+    section.videografia::after {
+        width: 300px;
+        height: 300px;
     }
 
 }
-```
