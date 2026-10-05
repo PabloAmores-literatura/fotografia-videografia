@@ -1,48 +1,267 @@
-```css id="n4z8qy"
+```css id="q7m2kd"
+/* =========================================
+   CONFIGURACIÓN GENERAL
+========================================= */
+
 * {
     box-sizing: border-box;
-}
-
-html,
-body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: Georgia, "Times New Roman", serif;
-    background: #000;
-    color: #fff;
+    background: #0b0b0b;
+    color: #f2f2f2;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
 }
+
+
+/* =========================================
+   CABECERA
+========================================= */
+
+.hero {
+    min-height: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 30px;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 6vw, 5rem);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+}
+
+.hero p {
+    margin-top: 15px;
+    color: #999;
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+
+/* =========================================
+   BLOQUES PRINCIPALES
+========================================= */
 
 main {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 100%;
-    height: 100vh;
+    min-height: 65vh;
 }
 
-section {
-    position: relative;
+section.fotografia,
+section.videografia {
+    min-height: 65vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    text-align: center;
+    padding: 60px;
+    transition: background 0.4s ease;
 }
 
 .fotografia {
     border-right: 1px solid #333;
 }
 
-h1 {
-    margin: 0;
-    font-size: 28px;
-    font-weight: normal;
+.fotografia:hover {
+    background: #111;
 }
-```
-```css
+
+.videografia:hover {
+    background: #111;
+}
+
+
+.section-content {
+    max-width: 500px;
+}
+
+.section-number {
+    color: #777;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    margin-bottom: 20px;
+}
+
+.section-content h2 {
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+}
+
+.section-description {
+    color: #999;
+    max-width: 350px;
+    margin: 25px auto 35px;
+    font-size: 0.95rem;
+}
+
+.enter {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid #777;
+    padding-bottom: 5px;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    transition: border-color 0.3s ease;
+}
+
+.enter:hover {
+    border-color: #fff;
+}
+
+
+/* =========================================
+   PORTFOLIO
+========================================= */
+
+.portfolio {
+    padding: 120px 8vw;
+    background: #f2f2f2;
+    color: #111;
+}
+
+.portfolio-header {
+    max-width: 700px;
+    margin-bottom: 80px;
+}
+
+.portfolio-header .section-number {
+    color: #888;
+}
+
+.portfolio-header h2 {
+    font-size: clamp(3rem, 7vw, 7rem);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+}
+
+.portfolio-header p:last-child {
+    margin-top: 20px;
+    color: #666;
+}
+
+
+/* =========================================
+   FOTOGRAFÍA
+========================================= */
+
+.fotografia-portfolio {
+    min-height: 60vh;
+}
+
+.coming-soon {
+    border-top: 1px solid #ccc;
+    padding-top: 30px;
+}
+
+.coming-soon p {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.coming-soon span {
+    color: #777;
+}
+
+
+/* =========================================
+   VIDEOGRAFÍA
+========================================= */
+
+.video-portfolio {
+    background: #0b0b0b;
+    color: #f2f2f2;
+}
+
+.video-portfolio .portfolio-header .section-number {
+    color: #666;
+}
+
+.video-portfolio .portfolio-header p:last-child {
+    color: #888;
+}
+
+
+.video-project {
+    margin-bottom: 120px;
+}
+
+.video-container {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+.project-info {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    column-gap: 30px;
+    margin-top: 25px;
+}
+
+.project-number {
+    color: #666;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+}
+
+.project-info h3 {
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.artist {
+    color: #aaa;
+    margin-top: 5px;
+}
+
+.project-description {
+    color: #777;
+    margin-top: 15px;
+    max-width: 600px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    padding: 50px 30px;
+    text-align: center;
+    background: #0b0b0b;
+    color: #666;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+}
+
+
+/* =========================================
+   MÓVIL
+========================================= */
+
 @media (max-width: 700px) {
 
     main {
@@ -50,8 +269,11 @@ h1 {
         grid-template-rows: 1fr 1fr;
     }
 
-    section {
+    section.fotografia,
+    section.videografia {
+        min-height: 50vh;
         height: 50vh;
+        padding: 40px 25px;
     }
 
     .fotografia {
@@ -59,7 +281,35 @@ h1 {
         border-bottom: 1px solid #333;
     }
 
+    .hero {
+        min-height: 30vh;
+        padding: 40px 20px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .portfolio {
+        padding: 80px 25px;
+    }
+
+    .portfolio-header {
+        margin-bottom: 50px;
+    }
+
+    .video-project {
+        margin-bottom: 80px;
+    }
+
+    .project-info {
+        grid-template-columns: 45px 1fr;
+        column-gap: 15px;
+    }
+
+    .project-info h3 {
+        font-size: 1.5rem;
+    }
+
 }
 ```
-
-
