@@ -13,15 +13,15 @@ html {
 }
 
 body {
-    background: #080808;
-    color: #f5f5f5;
+    background: #ffffff;
+    color: #111111;
     font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
 }
 
 
 /* =========================================
-   PORTADA
+   CABECERA
 ========================================= */
 
 .hero {
@@ -32,25 +32,7 @@ body {
     align-items: center;
     text-align: center;
     padding: 60px 30px;
-    position: relative;
 }
-
-
-/* pequeña línea superior */
-
-.hero::before {
-    content: "";
-    position: absolute;
-    top: 35px;
-    left: 50%;
-    width: 40px;
-    height: 1px;
-    background: #555;
-    transform: translateX(-50%);
-}
-
-
-/* título */
 
 .hero h1 {
     font-size: clamp(2.4rem, 7vw, 6.5rem);
@@ -60,10 +42,7 @@ body {
     max-width: 1100px;
 }
 
-
-/* subtítulo */
-
-.hero p:last-child {
+.hero p {
     margin-top: 22px;
     color: #777;
     font-size: 0.7rem;
@@ -97,35 +76,109 @@ section.videografia {
     padding: 70px 50px;
     position: relative;
     overflow: hidden;
+    background: #ffffff;
+}
+
+
+/* separación entre columnas */
+
+.fotografia {
+    border-right: 1px solid #dddddd;
+}
+
+
+/* =========================================
+   IMÁGENES
+========================================= */
+
+.section-image {
+    position: absolute;
+    inset: 0;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    opacity: 0;
+
+    transform: scale(1.08);
+
     transition:
-        background 0.5s ease,
+        opacity 0.6s ease,
+        transform 1s ease;
+}
+
+
+/* Fotografía */
+
+.fotografia .section-image {
+    background-image:
+        url("https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1600&q=85");
+}
+
+
+/* Videografía */
+
+.videografia .section-image {
+    background-image:
+        url("https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1600&q=85");
+}
+
+
+/* oscurece ligeramente la imagen */
+
+.section-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+
+/* mostrar imagen al pasar el ratón */
+
+section.fotografia:hover .section-image,
+section.videografia:hover .section-image {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+/* =========================================
+   CONTENIDO
+========================================= */
+
+.section-content {
+    max-width: 520px;
+    position: relative;
+    z-index: 2;
+
+    transition:
+        color 0.4s ease,
         transform 0.5s ease;
 }
 
 
-/* línea divisoria */
-
-.fotografia {
-    border-right: 1px solid #252525;
+section.fotografia:hover .section-content,
+section.videografia:hover .section-content {
+    color: #ffffff;
+    transform: translateY(-5px);
 }
 
 
 /* número */
 
 .section-number {
-    color: #555;
+    color: #888888;
     font-size: 0.65rem;
     letter-spacing: 0.3em;
     margin-bottom: 25px;
+
+    transition: color 0.4s ease;
 }
 
-
-/* contenido */
-
-.section-content {
-    max-width: 520px;
-    position: relative;
-    z-index: 2;
+section.fotografia:hover .section-number,
+section.videografia:hover .section-number {
+    color: #dddddd;
 }
 
 
@@ -142,46 +195,18 @@ section.videografia {
 /* descripción */
 
 .section-description {
-    color: #777;
+    color: #777777;
     max-width: 330px;
     margin: 28px auto 38px;
     font-size: 0.85rem;
     line-height: 1.8;
+
+    transition: color 0.4s ease;
 }
 
-
-/* =========================================
-   EFECTO HOVER
-========================================= */
-
-section.fotografia::after,
-section.videografia::after {
-    content: "";
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    border: 1px solid #222;
-    border-radius: 50%;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%) scale(0.7);
-    opacity: 0;
-    transition:
-        transform 0.7s ease,
-        opacity 0.7s ease;
-}
-
-
-section.fotografia:hover,
-section.videografia:hover {
-    background: #101010;
-}
-
-
-section.fotografia:hover::after,
-section.videografia:hover::after {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
+section.fotografia:hover .section-description,
+section.videografia:hover .section-description {
+    color: #dddddd;
 }
 
 
@@ -191,22 +216,28 @@ section.videografia:hover::after {
 
 .enter {
     display: inline-block;
-    color: #f5f5f5;
+    color: #111111;
     text-decoration: none;
-    border-bottom: 1px solid #555;
+    border-bottom: 1px solid #888888;
     padding-bottom: 8px;
     font-size: 0.65rem;
     letter-spacing: 0.25em;
+
     transition:
+        color 0.3s ease,
         border-color 0.3s ease,
-        letter-spacing 0.3s ease,
-        color 0.3s ease;
+        letter-spacing 0.3s ease;
+}
+
+
+section.fotografia:hover .enter,
+section.videografia:hover .enter {
+    color: #ffffff;
+    border-color: #ffffff;
 }
 
 
 .enter:hover {
-    border-color: #fff;
-    color: #fff;
     letter-spacing: 0.35em;
 }
 
@@ -218,15 +249,15 @@ section.videografia:hover::after {
 footer {
     padding: 35px 30px;
     text-align: center;
-    background: #080808;
-    color: #444;
+    background: #ffffff;
+    color: #888888;
     font-size: 0.65rem;
     letter-spacing: 0.15em;
 }
 
 
 /* =========================================
-   ANIMACIONES DE ENTRADA
+   ANIMACIÓN DE ENTRADA
 ========================================= */
 
 .hero h1 {
@@ -236,7 +267,6 @@ footer {
 .hero p {
     animation: fadeUp 1.2s ease forwards;
 }
-
 
 .section-content {
     animation: fadeUp 1.2s ease forwards;
@@ -269,17 +299,13 @@ footer {
         padding: 50px 20px;
     }
 
-    .hero::before {
-        top: 25px;
-    }
-
     .hero h1 {
         font-size: 2.2rem;
         line-height: 1.15;
         letter-spacing: 0.08em;
     }
 
-    .hero p:last-child {
+    .hero p {
         font-size: 0.6rem;
         letter-spacing: 0.25em;
     }
@@ -301,12 +327,7 @@ footer {
 
     .fotografia {
         border-right: none;
-        border-bottom: 1px solid #252525;
-    }
-
-
-    .section-number {
-        margin-bottom: 15px;
+        border-bottom: 1px solid #dddddd;
     }
 
 
@@ -322,10 +343,15 @@ footer {
     }
 
 
-    section.fotografia::after,
-    section.videografia::after {
-        width: 300px;
-        height: 300px;
+    /*
+       En móvil la imagen aparece al tocar/pulsar
+       la zona, cuando el dispositivo lo permite.
+    */
+
+    section.fotografia:active .section-image,
+    section.videografia:active .section-image {
+        opacity: 1;
+        transform: scale(1);
     }
 
 }
