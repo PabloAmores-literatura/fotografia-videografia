@@ -6,129 +6,131 @@
 
     <title>Videografía — Portfolio</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="videografia.css">
 </head>
 
 <body>
 
-    <header class="hero">
-        <p class="section-number">02</p>
-        <h1>VIDEOGRAFÍA</h1>
-        <p>Portfolio audiovisual</p>
+    <!-- NAVEGACIÓN SUPERIOR -->
+
+    <header class="video-header">
+
+        <a href="index.html" class="back">
+            ← INICIO
+        </a>
+
+        <div class="header-title">
+            <span>02</span>
+            <strong>VIDEOGRAFÍA</strong>
+        </div>
+
+        <div class="counter">
+            <span id="current">01</span>
+            <span>/</span>
+            <span id="total">02</span>
+        </div>
+
     </header>
 
 
-    <main>
+    <!-- GALERÍA -->
 
-        <section class="portfolio video-portfolio">
+    <main class="gallery">
 
-            <div class="portfolio-header">
 
-                <p class="section-number">02 — VIDEOGRAFÍA</p>
+        <!-- PROYECTO 01 -->
 
-                <h2>PROYECTOS</h2>
+        <article class="project active">
 
-                <p>
-                    Videoclips y proyectos audiovisuales.
-                    Una selección de trabajos realizados.
-                </p>
+            <div class="video-frame">
+
+                <iframe
+                    src="https://www.youtube.com/embed/lVWSQMh-Lsc?rel=0"
+                    title="Hazte Así"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
 
             </div>
 
 
-            <!-- PROYECTO 01 -->
+            <div class="project-info">
 
-            <article class="video-project">
+                <div class="project-number">
+                    01
+                </div>
 
-                <div class="video-container">
+                <div class="project-text">
 
-                    <iframe
-                        src="https://www.youtube.com/embed/lVWSQMh-Lsc"
-                        title="Proyecto audiovisual 01"
-                        loading="lazy"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen>
-                    </iframe>
+                    <h1>joseluis - Hazte Así</h1>
+
+                    <p>Videoclip</p>
 
                 </div>
 
+            </div>
 
-                <div class="project-info">
+        </article>
 
-                    <div class="project-number">
-                        01
-                    </div>
 
-                    <div>
+        <!-- PROYECTO 02 -->
 
-                        <h3> joseluis - Hazte Así</h3>
+        <article class="project">
 
-                        <p class="artist">
-                            Videoclip
-                        </p>
+            <div class="video-frame">
 
-                        <p class="project-description">
-                            Dirección y edición.
-                        </p>
+                <iframe
+                    src="https://www.youtube.com/embed/dudeT77_tFE?rel=0"
+                    title="El Orden De Las Cosas"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
 
-                    </div>
+            </div>
+
+
+            <div class="project-info">
+
+                <div class="project-number">
+                    02
+                </div>
+
+                <div class="project-text">
+
+                    <h1>Mondo du Plantis - El Orden De Las Cosas</h1>
+
+                    <p>Videoclip</p>
 
                 </div>
 
-            </article>
+            </div>
+
+        </article>
 
 
-            <!-- PROYECTO 02 -->
+        <!-- FLECHAS -->
 
-            <article class="video-project">
+        <button class="navigation previous" id="previous" aria-label="Proyecto anterior">
+            ←
+        </button>
 
-                <div class="video-container">
-
-                    <iframe
-                        src="https://www.youtube.com/embed/dudeT77_tFE"
-                        title="Proyecto audiovisual 02"
-                        loading="lazy"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen>
-                    </iframe>
-
-                </div>
-
-
-                <div class="project-info">
-
-                    <div class="project-number">
-                        02
-                    </div>
-
-                    <div>
-
-                        <h3> Mondo du Plantis - El Orden De Las Cosas</h3>
-
-                        <p class="artist">
-                            Videoclip
-                        </p>
-
-                        <p class="project-description">
-                            Dirección y edición.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-        </section>
+        <button class="navigation next" id="next" aria-label="Proyecto siguiente">
+            →
+        </button>
 
     </main>
 
 
+    <!-- PIE -->
+
     <footer>
-        <a href="index.html" class="enter">
-            ← VOLVER AL INICIO
-        </a>
+
+        <span>PORTFOLIO AUDIOVISUAL</span>
+
     </footer>
+
+
+    <script src="videografia.js"></script>
 
 </body>
 </html>
