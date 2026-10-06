@@ -25,31 +25,30 @@ body {
 ========================================= */
 
 .hero {
-    min-height: 38vh;
+    min-height: 30vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 60px 30px;
+    padding: 40px 30px;
 }
 
 .hero h1 {
-    font-size: clamp(2.4rem, 7vw, 6.5rem);
-    font-weight: 100;
+    font-size: clamp(1.8rem, 5vw, 4.5rem);
+    font-weight: 300;
     letter-spacing: 0.12em;
     line-height: 1;
     max-width: 1100px;
 }
 
 .hero p {
-    margin-top: 22px;
+    margin-top: 16px;
     color: #777;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     letter-spacing: 0.35em;
     text-transform: uppercase;
 }
-
 
 /* =========================================
    BLOQUES PRINCIPALES
@@ -58,7 +57,7 @@ body {
 main {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 62vh;
+    min-height: 70vh;
 }
 
 
@@ -68,7 +67,7 @@ main {
 
 section.fotografia,
 section.videografia {
-    min-height: 62vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
