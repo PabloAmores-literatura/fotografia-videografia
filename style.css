@@ -112,17 +112,14 @@ section.videografia {
 
 .fotografia .section-image {
     background-image:
-        <img
-                        src="fotografia/IMG_000150.jpg";
+        url("fotografia/IMG_000133.jpg");
 }
-
 
 /* Videografía */
 
 .videografia .section-image {
     background-image:
-        <img
-                        src="capturas/IG__eodlc00.mov";
+        url("capturas/EODLC--still01.png");
 }
 
 
