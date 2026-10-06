@@ -150,6 +150,8 @@ body {
 
     visibility: hidden;
 
+    pointer-events: none;
+
     transform: scale(0.98);
 
     transition:
@@ -164,6 +166,8 @@ body {
     opacity: 1;
 
     visibility: visible;
+
+    pointer-events: auto;
 
     transform: scale(1);
 }
