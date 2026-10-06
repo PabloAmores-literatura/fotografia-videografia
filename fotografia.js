@@ -4,8 +4,34 @@ const nextButton = document.getElementById("next");
 const previousButton = document.getElementById("previous");
 
 const currentNumber = document.getElementById("current");
+const totalNumber = document.getElementById("total");
 
 let currentProject = 0;
+
+
+/* =========================================
+   INICIO
+========================================= */
+
+/*
+   Nos aseguramos de que solamente
+   un proyecto esté activo.
+*/
+
+projects.forEach((project) => {
+    project.classList.remove("active");
+});
+
+
+if (projects.length > 0) {
+
+    projects[0].classList.add("active");
+
+    currentNumber.textContent = "01";
+
+    totalNumber.textContent =
+        String(projects.length).padStart(2, "0");
+}
 
 
 /* =========================================
@@ -14,11 +40,16 @@ let currentProject = 0;
 
 function showProject(index) {
 
-    projects[currentProject].classList.remove("active");
+    projects.forEach((project) => {
+        project.classList.remove("active");
+    });
+
 
     currentProject = index;
 
+
     projects[currentProject].classList.add("active");
+
 
     currentNumber.textContent =
         String(currentProject + 1).padStart(2, "0");
@@ -61,6 +92,7 @@ nextButton.addEventListener(
     nextProject
 );
 
+
 previousButton.addEventListener(
     "click",
     previousProject
@@ -76,11 +108,16 @@ document.addEventListener(
     function(event) {
 
         if (event.key === "ArrowRight") {
+
             nextProject();
+
         }
 
+
         if (event.key === "ArrowLeft") {
+
             previousProject();
+
         }
 
     }
