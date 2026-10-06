@@ -177,10 +177,17 @@ body {
    SERIE FOTOGRÁFICA
 ========================================= */
 
+/* =========================================
+   SERIE FOTOGRÁFICA
+========================================= */
+
+/* =========================================
+   SERIE FOTOGRÁFICA
+========================================= */
+
 .photo-series {
 
     width: 100%;
-
     max-width: 1400px;
 
     height: min(70vh, 850px);
@@ -190,7 +197,6 @@ body {
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
     gap: 18px;
@@ -201,10 +207,13 @@ body {
 
     height: 100%;
 
+    flex: 1;
+
+    min-width: 0;
+
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
     overflow: hidden;
@@ -215,15 +224,13 @@ body {
 
     display: block;
 
-    height: 100%;
-
     width: auto;
+    height: 100%;
 
     max-width: 100%;
 
     object-fit: contain;
 }
-
 
 /* =========================================
    INFORMACIÓN
@@ -368,6 +375,10 @@ footer {
    MÓVIL
 ========================================= */
 
+/* =========================================
+   MÓVIL
+========================================= */
+
 @media (max-width: 700px) {
 
     body {
@@ -398,22 +409,56 @@ footer {
     .project {
 
         padding: 75px 18px 70px;
+
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        justify-content: flex-start;
+
+        -webkit-overflow-scrolling: touch;
+
+        scrollbar-width: none;
     }
 
 
+    .project::-webkit-scrollbar {
+        display: none;
+    }
+
+
+    /* =====================================
+       MÓVIL VERTICAL
+    ===================================== */
+
     .photo-series {
 
-        height: 62vh;
+        width: 100%;
 
-        gap: 8px;
+        height: auto;
+
+        margin: 0 auto;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: flex-start;
+
+        gap: 28px;
     }
 
 
     .photo {
 
-        width: 50%;
+        width: min(88vw, 500px);
 
         height: auto;
+
+        flex: none;
+
+        overflow: visible;
     }
 
 
@@ -423,11 +468,17 @@ footer {
 
         height: auto;
 
-        max-height: 62vh;
+        max-width: 100%;
+
+        max-height: none;
 
         object-fit: contain;
     }
 
+
+    /* =====================================
+       INFORMACIÓN
+    ===================================== */
 
     .project-info {
 
@@ -435,7 +486,9 @@ footer {
 
         gap: 10px;
 
-        margin-top: 18px;
+        margin: 25px auto 40px;
+
+        width: min(88vw, 500px);
     }
 
 
@@ -451,11 +504,15 @@ footer {
     }
 
 
+    /* =====================================
+       FLECHAS
+    ===================================== */
+
     .navigation {
 
         width: 60px;
 
-        height: 120px;
+        height: 100px;
 
         font-size: 1.2rem;
     }
@@ -466,6 +523,78 @@ footer {
         left: 20px;
 
         bottom: 18px;
+    }
+
+}
+
+
+/* =========================================
+   MÓVIL HORIZONTAL
+========================================= */
+
+@media (max-width: 900px) and (orientation: landscape) {
+
+    .project {
+
+        padding: 70px 60px 55px;
+
+        overflow: hidden;
+
+        justify-content: center;
+    }
+
+
+    .photo-series {
+
+        width: 100%;
+
+        height: calc(100vh - 145px);
+
+        display: flex;
+
+        flex-direction: row;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 10px;
+    }
+
+
+    .photo {
+
+        width: auto;
+
+        height: 100%;
+
+        flex: 1;
+
+        min-width: 0;
+    }
+
+
+    .photo img {
+
+        width: auto;
+
+        height: 100%;
+
+        max-width: 100%;
+
+        object-fit: contain;
+    }
+
+
+    .project-info {
+
+        display: none;
+    }
+
+
+    footer {
+
+        display: none;
     }
 
 }
