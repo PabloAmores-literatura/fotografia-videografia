@@ -112,7 +112,8 @@ section.videografia {
 
 .fotografia .section-image {
     background-image:
-        src="fotografia/IMG_000150.jpg";
+        <img
+                        src="fotografia/IMG_000150.jpg";
 }
 
 
@@ -120,7 +121,8 @@ section.videografia {
 
 .videografia .section-image {
     background-image:
-        url("https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1600&q=85");
+        <img
+                        src="capturas/IG__eodlc00.mov";
 }
 
 
