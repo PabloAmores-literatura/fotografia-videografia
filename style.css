@@ -357,6 +357,8 @@ section.videografia {
         transform: scale(1);
     }
 
+}
+   
 
    /* =========================================
    IGUALAR TÍTULOS EN MÓVIL
@@ -372,5 +374,4 @@ section.videografia {
         line-height: 1;
     }
 
-}
 }
