@@ -1,3 +1,4 @@
+
 const projects = document.querySelectorAll(".project");
 
 const nextButton = document.getElementById("next");
@@ -20,75 +21,49 @@ totalNumber.textContent =
 
 
 /* =========================================
-   CREAR URL DEL VÍDEO
+   CARGAR MINIATURA Y VÍDEO
 ========================================= */
 
-function getVideoUrl(iframe) {
+function loadProject(project) {
 
-    const baseUrl = iframe.dataset.video;
-
-    return `${baseUrl}?autoplay=1&mute=1&rel=0&enablejsapi=1`;
-}
-
-
-/* =========================================
-   REPRODUCIR PROYECTO
-========================================= */
-
-function playProject(project) {
-
-    const iframe =
-        project.querySelector("iframe");
+    const iframe = project.querySelector("iframe");
 
     if (!iframe) return;
 
+    const baseUrl = iframe.dataset.video;
 
     /*
-       Si todavía no tiene vídeo cargado,
-       lo cargamos ahora.
+       Cargamos YouTube sin autoplay.
+       La miniatura y el botón Play
+       los proporciona YouTube.
     */
 
-    if (!iframe.src) {
+    if (!iframe.dataset.loaded) {
 
-        iframe.src = getVideoUrl(iframe);
+        iframe.src = `${baseUrl}?rel=0&playsinline=1&enablejsapi=1`;
 
-        return;
+        iframe.dataset.loaded = "true";
 
     }
-
-
-    /*
-       Si ya está cargado, le decimos
-       a YouTube que reproduzca.
-    */
-
-    iframe.contentWindow.postMessage(
-        JSON.stringify({
-            event: "command",
-            func: "playVideo"
-        }),
-        "*"
-    );
 
 }
 
 
 /* =========================================
-   PAUSAR PROYECTO
+   PAUSAR VÍDEO
 ========================================= */
 
 function pauseProject(project) {
 
-    const iframe =
-        project.querySelector("iframe");
+    const iframe = project.querySelector("iframe");
 
-    if (!iframe || !iframe.src) return;
-
+    if (!iframe || !iframe.dataset.loaded) return;
 
     iframe.contentWindow.postMessage(
         JSON.stringify({
             event: "command",
-            func: "pauseVideo"
+            func: "pauseVideo",
+            args: []
         }),
         "*"
     );
@@ -102,12 +77,6 @@ function pauseProject(project) {
 
 function showProject(index) {
 
-
-    /*
-       Pausar todos los proyectos
-       antes de cambiar.
-    */
-
     projects.forEach((project) => {
 
         pauseProject(project);
@@ -116,32 +85,21 @@ function showProject(index) {
 
     });
 
-
     currentProject = index;
 
-
-    const activeProject =
-        projects[currentProject];
-
+    const activeProject = projects[currentProject];
 
     activeProject.classList.add("active");
-
 
     currentNumber.textContent =
         String(currentProject + 1).padStart(2, "0");
 
-
     /*
-       Esperamos un poco para que la
-       transición visual termine y
-       entonces iniciamos el vídeo.
+       Cargamos el vídeo del proyecto activo,
+       pero no lo reproducimos.
     */
 
-    setTimeout(() => {
-
-        playProject(activeProject);
-
-    }, 300);
+    loadProject(activeProject);
 
 }
 
@@ -167,8 +125,7 @@ function nextProject() {
 function previousProject() {
 
     const previous =
-        (currentProject - 1 + totalProjects)
-        % totalProjects;
+        (currentProject - 1 + totalProjects) % totalProjects;
 
     showProject(previous);
 
@@ -179,41 +136,22 @@ function previousProject() {
    BOTONES
 ========================================= */
 
-nextButton.addEventListener(
-    "click",
-    nextProject
-);
+nextButton.addEventListener("click", nextProject);
 
-
-previousButton.addEventListener(
-    "click",
-    previousProject
-);
+previousButton.addEventListener("click", previousProject);
 
 
 /* =========================================
    TECLADO
 ========================================= */
 
-document.addEventListener(
-    "keydown",
-    function(event) {
+document.addEventListener("keydown", function(event) {
 
-        if (event.key === "ArrowRight") {
+    if (event.key === "ArrowRight") nextProject();
 
-            nextProject();
+    if (event.key === "ArrowLeft") previousProject();
 
-        }
-
-
-        if (event.key === "ArrowLeft") {
-
-            previousProject();
-
-        }
-
-    }
-);
+});
 
 
 /* =========================================
